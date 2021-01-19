@@ -1,0 +1,456 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles/dashboard.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.2/main.css">
+    <link rel="stylesheet" type='text/css' href="{% static 'css/styles/taskPopup.css' %}">
+    <script src="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.3.2/main.js,npm/fullcalendar@5.3.2/locales-all.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css"
+          integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
+            integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'scripts/dashboard.js' %}"></script>
+{% endblock head %}
+
+<!-- ========================================================================== -->
+<!-- TODO This file needs to be cleaned up. Scripts need to be moved out of it. -->
+<!-- ========================================================================== -->
+
+{% block content %}
+    <!-- All of the code that could be moved to a JS file, has been.
+    The stuff below interacts directly with Django and so I don't think
+    it can go in a separate file -->
+    <script>
+        var my_task;
+
+        // Begin calendar setup
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridDay', // set the initial view for the calendar with daily view
+                // set the header bar
+                headerToolbar: {
+                    left: 'prev,next today list',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                // load all tasks into calendar
+                events: [
+                    {%  for task in tasks %}
+                        {
+                            title: "{{ task.name }}",
+                            start: '{{ task.start_time_date|date:"Y-m-d H:i:s" }}',
+                            end: '{{ task.end_time_date|date:"Y-m-d H:i:s" }}',
+                            allday: false,
+                            id: '{{ task.id }}',
+                        },
+                    {% endfor %}
+                ],
+                eventColor: '#061d9c',
+                // display the popup details when clicking the task
+                eventClick: function (info) {
+                    detail_show(info.event)
+                }
+
+
+            });
+            calendar.render();
+
+            // Requests new events for the calendar according to filters; renders them
+            var csrftoken = '{{csrf_token}}';
+            $("button.tag-btn").click(function () {
+                var id = $(this).val();
+                // Send GET request to filter function in views.py with the Tag id
+                $.ajax({
+                    type: 'GET',
+                    url: '{% url "dashboard-filter" %}',
+                    headers: {"X-CSRFToken": csrftoken},
+                    data: {id: id},
+                    // On success, automatically parses JSON and displays new tasks
+                    success: function (response) {
+                        var event_arr = $.parseJSON(response);
+                        var eventSources = calendar.getEventSources();
+                        var len = eventSources.length;
+                        for (var i = 0; i < len; i++) {
+                            eventSources[i].remove();
+                        }
+                        calendar.addEventSource(event_arr);
+                    }
+                })
+            });
+
+            // Sends a request to assign a tag to a task
+            $("button.tag-popup-select-btn").click(function () {
+                var tag_id = $(this).val();
+                var task_id = my_task.id;
+                $.ajax({
+                    type: 'GET',
+                    url: '{% url "assign-tag" %}',
+                    data: {
+                        tag_id: tag_id,
+                        task_id: task_id
+                    },
+                    success: function (response) {
+                        alert("Tag assigned");
+                    }
+                })
+            });
+            var flag = false;
+
+            //Display Popup of whole detail box
+            function detail_show(task) {
+                my_task = task;
+                flag = false;
+
+                // change the data format
+                function format_date_time(date) {
+                    console.log(date)
+                    return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + "/" + date.getHours() + ":" + date.getMinutes();
+                };
+
+                // display the detail box with buttons and hide others
+                document.getElementById('popupClock').style.display = "none";
+                document.getElementById('detailBox').style.display = "block";
+                document.getElementById('buttons_detail').style.display = "block";
+                document.getElementById('detailBoxWhole').style.display = "block";
+                document.getElementById('detail_form').style.display = "none";
+                document.getElementById('id_editing').setAttribute("value", task.id);
+                // dispaly the details
+                var title = document.getElementById('title_detail');
+                title.innerText = "Title: " + task.title;
+                var start = document.getElementById('start_time_detail');
+                start.innerText = "Start time: " + format_date_time(task.start);
+                var end = document.getElementById('end_time_detail');
+                end.innerText = "End time: " + format_date_time(task.end);
+                //since the api does not store comments, use Ajax to load the comment
+                var id = task.id;
+                var csrftoken = '{{csrf_token}}';
+                $.ajax({
+                    type: 'GET',
+                    url: '{% url "dashboard-show-details"%}',
+                    headers: {"X-CSRFToken": csrftoken},
+                    data: {id: id},
+                    success: function (response) {
+                        var task = $.parseJSON(response);
+                        var comments = document.getElementById("comments_detail");
+                        comments.innerText = "Comments: " + task[0].comments;
+                    }
+                });
+                // the function for marking a task completed
+                $("button.mark_completed_button").click(function () {
+                    // the flag is used to prevent multiple requests
+                    if (flag) {
+                        return;
+                    }
+                    //display a notice
+                    var r = confirm("Are you sure the task is completed?");
+                    if (r === true) {
+                        flag = true;
+                        $.ajax({
+                            type: 'POST',
+                            url: '{% url "complete-task" %}',
+                            headers: {"X-CSRFToken": '{{csrf_token}}'},
+                            data: {id: id},
+                            // On success, automatically parses JSON and displays new tasks
+                        })
+                    } else {
+                        flag = true;
+                    }
+
+                    detail_hide();
+
+                });
+
+            };
+        });
+        // delete task
+        function delete_task() {
+            detail_hide()
+            var id = document.getElementById("id_editing").getAttribute("value");
+            // use Ajsx to send POST request for deleting a task
+            console.log(id)
+            var csrftoken = '{{csrf_token}}';
+            $.ajax({
+                type: 'POST',
+                url: '{% url "delete-task"%}',
+                headers: {"X-CSRFToken": csrftoken},
+                data: {id: id},
+                success:function (response){
+                    window.location.href = response.url;
+                }
+            });
+
+        }
+
+
+        function show_editing_panel() {
+            // store the id and hies corresponding element
+            var id = document.getElementById("id_editing").getAttribute("value");
+            // hide the detail box
+            document.getElementById('id_editing').style.display = "none"
+            document.getElementById('detailBox').style.display = "none"
+            // load data from backend via Ajx
+            var csrftoken = '{{csrf_token}}';
+            $.ajax({
+                type: 'GET',
+                url: '{% url "dashboard-show-details"%}',
+                headers: {"X-CSRFToken": csrftoken},
+                data: {id: id},
+                success: function (response) {
+                    //assign values to html elements
+                    var task = $.parseJSON(response);
+                    console.log(task)
+                    document.getElementById("name_editing").setAttribute("placeholder", task[0].name);
+                    document.getElementById("start_time_date_editing").setAttribute("placeholder", task[0].start);
+                    document.getElementById("end_time_date_editing").setAttribute("placeholder", task[0].end);
+                    document.getElementById("is_recurring_editing").checked = task[0].recurring;
+                    document.getElementById("reminder_time_date_editing").setAttribute("placeholder", task[0].notification);
+                    document.getElementById("comments_editing").setAttribute("placeholder", task[0].comments);
+                }
+            });
+
+            document.getElementById('buttons_detail').style.display = "none";
+            document.getElementById('detail_form').style.display = "block";
+
+        };
+    </script>
+
+    <!-- Main content div of the page -->
+    <div class="container">
+        <div class="row">
+            <div id="cal" class="col-10" style="overflow: hidden">
+                <div id='calendar'></div>
+                <div id="detailBoxWhole">
+                    <!-- Popup detail Starts Here -->
+                    <div id="popupDetail">
+                        <img id="close" src="{% static 'images/close_button.png' %}" onclick="detail_hide()">
+                        <h2 style="color: white">Task Details</h2>
+                        <!-- Detail Box  Starts Here -->
+                        <div id="detailBox" name="detailBox">
+                            <div id="title_detail"></div>
+                            <div id="start_time_detail"></div>
+                            <div id="end_time_detail"></div>
+                            <div id="comments_detail"></div>
+                            <!-- Detail Box Ends Here -->
+                            <!-- Popup clock Starts Here -->
+                            <div id="popupClock">
+                                <br>
+                                <div id="start_time_clock"></div>
+                                <div id="end_time_clock"></div>
+                                <input id="clock" style="width: auto" type="text" disabled="disabled" value="00:00">
+                                <br>
+                                <button class='btn btn-full' id="start_clock_button" onclick="start_clock()"> start
+                                </button>
+                                <button class='btn btn-full' id="stop_clock_button" onclick="stop_clock()"> stop
+                                </button>
+                                <button class='btn btn-full' id="reset_clock_button" onclick="reset_clock()"> reset
+                                </button>
+                                <button class="mark_completed_button btn btn-ghost" href="#" style="float:right"> Mark
+                                    as Completed
+                                </button>
+                            </div>
+                            <!-- Popup clock Ends Here -->
+
+                            <!-- Popup detail buttons Starts Here -->
+                            <div id="buttons_detail" name="buttons_detail">
+                                <button class="btn btn-full" onclick="clock_show()">start</button>
+                                <a href="#" id="assign-tag" class="btn btn-full" onclick="toggle('tag-form')">Assign
+                                    Tag</a>
+                                <button class="btn btn-full" style="float:right" onclick="show_editing_panel()">
+                                    Edit
+                                </button>
+                                <button class="btn btn-full" style="float:right; margin-right: 10px;" onclick="delete_task()">Delete</button>
+                            </div>
+                            <!-- Popup detail buttons Ends Here -->
+
+
+                        </div>
+                        <!-- Popup detail editing form Starts Here -->
+                        <form action="{% url 'update-task' %}" id="detail_form" method="POST">
+                            {% csrf_token %}
+                            <div class="container">
+                                <div class="row">
+                                    <input name="id_editing" id="id_editing" size="14">
+                                    <div class="col">
+                                        <label for="name_editing" class="editing_label">Name:</label>
+                                        <br>
+                                        <input name="name_editing" id="name_editing" size="14">
+                                    </div>
+                                    <div class="col">
+                                        <label for="is_recurring_editing " class="editing_label">Regular task</label>
+                                        <br>
+                                        <input name="is_recurring_editing" id="is_recurring_editing"
+                                               type="checkbox">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <br>
+                                        <label for="start_time_date_editing" class="editing_label">Task Start:</label>
+                                        <br>
+                                        <input name="start_time_date_editing" id="start_time_date_editing"
+                                               size="14">
+                                    </div>
+                                    <div class="col">
+                                        <br>
+                                        <label for="end_time_date_editing" class="editing_label">Task End:</label>
+                                        <br>
+                                        <input name="end_time_date_editing" id="end_time_date_editing"
+                                               size="14">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <br>
+                                        <label for="reminder_time_date_editing" class="editing_label">Remind me
+                                            at:</label>
+                                        <br>
+                                        <input name="reminder_time_date_editing" id="reminder_time_date_editing"
+                                               size="14">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <br>
+                                        <label for="comments_editing" class="editing_label">Comments:</label>
+                                        <br>
+                                        <input name="comments_editing" id="comments_editing" size="41">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <button class="btn btn-full" type="submit" name="button">Save Task</button>
+                                <button class="btn btn-full" style="float:right" onclick="detail_hide()">Cancel</button>
+                            </div>
+                        </form>
+                        <!-- Popup detail editing form Ends Here -->
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-2">
+                <a id="add-task-btn" href="#add-task-btn" onclick="toggle('create-task-form')" class='btn btn-full'>Add
+                    Task</a>
+                <h2 id="tags-h2" style="white-space: pre">‎‎ Tags</h2>
+                <div class="tags">
+                    <ul class="tag-list">
+                        <a href="#create-tag-btn" id="create-tag-btn" onclick='toggle("create-tag-form")'
+                           class="btn btn-full create-tag-btn tag-btn">Create new tag</a>
+                        <li><button class="btn btn-ghost tag-btn" value="clear">Clear Tags</button></li>
+
+                        {% for tag in tags %}
+                            <li>
+                                <button class="btn btn-ghost tag-btn" value="{{ tag.id }}">{{ tag.name }}</button>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================== -->
+    <!-- ================POPUPS================ -->
+    <!-- ====================================== -->
+    <div id="tag-form" class="popup">
+        <h3 id="assign-text">Assign a tag!</h3>
+        <ul class="tag-list">
+            {% for tag in tags %}
+                <li>
+                    <button href="#" class="btn btn-ghost tag-popup-select-btn"
+                            value="{{ tag.id }}">{{ tag.name }}</button>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div id="create-tag-form" class="popup">
+        <h2>Create a new tag</h2>
+        <form action="{% url 'create-tag' %}" method="POST">
+            {% csrf_token %}
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <br>
+                        <label for="name">Tag name:</label>
+                        <br>
+                        <input name="name" id="name" required size="12">
+                        <button href="#" id="create-submit-tag" class="btn btn-full" type="submit" name="button">Create
+                            Tag
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Create task popup functionality start -->
+    <!-- Form responsible for task creation -->
+    <div id="create-task-form" class="popup">
+        <div id="popup">
+            <h3>Add a task</h3>
+            <br>
+            <!-- Had to write the form manually to get it to behave with the date time picker.. :/ -->
+            <form action="{% url 'create-task' %}" method="POST">
+                {% csrf_token %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <label for="name">Name:</label>
+                            <br>
+                            <input name="name" id="name" required size="14">
+                        </div>
+                        <div class="col">
+                            <label for="is_recurring">Regular task</label>
+                            <br>
+                            <input name="is_recurring" id="is_recurring" type="checkbox">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <br>
+                            <label for="start_time_date">Task Start:</label>
+                            <input name="start_time_date" id="start_time_date" required size="14">
+                        </div>
+                        <div class="col">
+                            <br>
+                            <label for="end_time_date">Task End:</label>
+                            <input name="end_time_date" id="end_time_date" required size="14">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <br>
+                            <label for="reminder_time_date">Remind me at:</label>
+                            <br>
+                            <input name="reminder_time_date" id="reminder_time_date" size="14">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <br>
+                            <label for="comments">Comments:</label>
+                            <br>
+                            <input name="comments" id="comments" size="41">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="form-group">
+                    <button class="btn btn-full" type="submit" name="button">Create Task</button>
+                </div>
+            </form>
+            <br>
+        </div>
+    </div>
+    <!-- Create task popup functionality end -->
+
+
+{% endblock content %}

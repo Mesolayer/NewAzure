@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load badgify_tags %}
+
+{% block content %}
+
+{% badgify_badges user=user as badges %}
+
+<div style="margin-bottom:50px">
+    <h2><strong>Achievements!</strong></h2>
+</div>
+
+
+{% for badge in badges %}
+    {% if forloop.counter0|divisibleby:3 %} <div class="row text-center"> {%  endif %}
+        <div class="col-md-4">
+          <div class="card text-center border-secondary mb-3" style="width: 18.5rem;">
+            <div class="card-header bg-warning mb-3">
+              <p><strong>You are 1 of only {{ badge.users_count }} to get this badge!</strong></p>
+            </div>
+            <img class = "card-img-top" src="{{ badge.image.url }}" alt="">
+            <div class="card-footer">
+              <h5 class="card-title"><strong>{{ badge.name }}</strong></h5>
+              <p>{{ badge.description }}</p>
+            </div>
+          </div>
+        </div>
+    {%  if forloop.counter|divisibleby:3 or forloop.last %}</div><!-- row closing --><hr>{%  endif %}
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
