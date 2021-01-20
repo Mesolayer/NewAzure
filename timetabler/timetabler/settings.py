@@ -26,7 +26,7 @@ SECRET_KEY = 'jp)vvvl)ni%k@!ltj^@lwq7t0f63+lf33g1(!jt3cp91#1*gp1'
 DEBUG = True
 
 #ALLOWED_HOSTS = ['ec2-13-211-131-38.ap-southeast-2.compute.amazonaws.com', 'localhost']
-ALLOWED_HOSTS = ['herokudjangoapp9613.herokuapp.com']
+ALLOWED_HOSTS = ['herokudjangoapp3169.herokuapp.com']
 
 # Application definition
 
