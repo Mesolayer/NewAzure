@@ -26,7 +26,7 @@ SECRET_KEY = 'jp)vvvl)ni%k@!ltj^@lwq7t0f63+lf33g1(!jt3cp91#1*gp1'
 DEBUG = True
 
 #ALLOWED_HOSTS = ['ec2-13-211-131-38.ap-southeast-2.compute.amazonaws.com', 'localhost']
-
+ALLOWED_HOSTS = ['herokudjangoapp9613.herokuapp.com']
 
 # Application definition
 
@@ -48,6 +48,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+
+	'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -82,7 +84,7 @@ WSGI_APPLICATION = 'timetabler.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+   'default': {
         #'ENGINE': 'django.db.backends.postgresql_psycopg2',
         #'NAME': 'timetabler',
         #'USER': 'alex',
@@ -131,7 +133,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static/images/')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
@@ -147,3 +149,19 @@ STATICFILES_DIRS = [
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home'
+
+PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
+#STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra lookup directories for collectstatic to find static files
+#STATICFILES_DIRS = (
+ #   os.path.join(PROJECT_ROOT, 'static'),
+#)
+
+#  Add configuration for static files storage using whitenoise
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+import dj_database_url 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
