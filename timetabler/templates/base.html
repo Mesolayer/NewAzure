@@ -5,7 +5,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base_styles/base.css' %}">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- jQuery -->
@@ -14,9 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 
     {% if title %}
-        <title>Productivity Quest - {{ title }}</title>
+        <title>Fibre Optics- {{ title }}</title>
     {% else %}
-        <title>Productivity Quest</title>
+        <title>Fibre Optics</title>
     {% endif %}
 
 </head>
@@ -24,21 +24,18 @@
 <body>
     <header>
         <nav class="navbar">
-          <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="Productivity Quest Logo" class="d-inline-block align-top logo"></a>
+          <a class="navbar-brand" href="#"><img src="{% static 'images/lor.png' %}" alt="LOR Logo" class="d-inline-block align-top logo"></a>
           <ul class="main-nav">
               <li><a href="{% url 'home' %}">Home</a></li>
-              <li><a href="{% url 'daily-dashboard' %}" id="show_calendar", tasks = {{ tasks }}>Dashboard</a></li>
-              <!-- <li><a href="#">Gallery</a></li> -->
-              <li><a href="{% url 'achievements' %}">Achievements</a></li>
-              <!-- <li><a href="#">Contact</a></li> -->
-              {% if user.is_authenticated %}
+              <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+              <!--  <li><a href="{% url 'achievements' %}">Achievements</a></li> -->
+              <!-- {% if user.is_authenticated %} 
                 <li><a href="{% url 'profile' %}">Profile</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
               {% else %}
                 <li><a href="{% url 'register' %}">Register</a></li>
                 <li><a href="{% url 'login' %}">Login</a></li>
-              {% endif %}
-
+              {% endif %}-->
           </ul>
         </nav>
     </header>
@@ -51,9 +48,9 @@
           </div>
           {% endfor %}
         {% endif %}
-        <div class="container" id="main-content">
+        
           {% block content %}{% endblock %}
-        </div>
+        
     </section>
 
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
