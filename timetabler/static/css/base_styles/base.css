@@ -67,6 +67,9 @@ section {
 iframe {
     margin: 0 auto;
     display: block;
+    /*padding: 1%;*/
+    /*float: left;*/
+    width: 94%;
 }
 
 .featurette-divider {
