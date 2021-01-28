@@ -64,6 +64,13 @@ section {
     width: 94%;
 }
 
+ .bannerTest
+{
+    background-image: url('../../images/cover1Min.png');*/
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
 iframe {
     margin: 0 auto;
     display: block;
