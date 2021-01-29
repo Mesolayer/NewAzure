@@ -37,14 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
     'engine',
     'dashboard',
-    # 'users.apps.UsersConfig',
-    'users',
-    # 'task',
-    'achievements',
-    'badgify',
 ]
 
 MIDDLEWARE = [
@@ -85,12 +79,6 @@ WSGI_APPLICATION = 'timetabler.wsgi.application'
 
 DATABASES = {
    'default': {
-        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        #'NAME': 'timetabler',
-        #'USER': 'alex',
-        #'PASSWORD': '123456',
-        #'HOST': 'localhost',
-        #'PORT': '',
          'ENGINE': 'django.db.backends.sqlite3',
          'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
