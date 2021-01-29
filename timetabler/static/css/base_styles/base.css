@@ -66,7 +66,7 @@ section {
 
  .bannerTest
 {
-    background-image: url('../../images/cover1Min.png');*/
+    background-image: url('../../images/cover1Min.png');
     background-repeat: no-repeat;
     background-size: cover; 
 }
@@ -92,6 +92,11 @@ iframe {
 }
 .test{
     margin-top:20px;
+    margin: 0 auto;
+    display: block;
+    /*padding: 1%;*/
+    /*float: left;*/
+    width: 94%;
 }
 
 
