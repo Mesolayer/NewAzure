@@ -91,8 +91,8 @@ iframe {
   letter-spacing: -.05rem;
 }
 .test{
-    margin-top:20px;
-    margin: 0 auto;
+    /*margin-top:3%;*/
+    margin: 3% auto;
     display: block;
     /*padding: 1%;*/
     /*float: left;*/
@@ -238,4 +238,11 @@ header {
 .btn-full:hover {
     background-color: #460066;
     color: rgb(226, 225, 225);
+}
+#colLeft{
+    text-align: left;
+
+}
+#colRight{
+    text-align: right;
 }
