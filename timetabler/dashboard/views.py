@@ -6,7 +6,6 @@ from django.db import models
 from django.urls import reverse_lazy
 
 from django.contrib.auth.models import User
-from engine.models import Task, Tag, UserData
 from django.contrib.auth.decorators import login_required
 
 from django.db.models.signals import post_save
