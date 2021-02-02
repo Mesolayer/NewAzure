@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!--<h2>Home!</h2>-->
+
+<!-- always add this to each panel &refresh=1s-->
+
+<div class="container">
+  <!--<div class="row"> -->
+   <!-- <div class ="col">-->
+      <!--<iframe class="panel" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/Cmuvf1BMk/graph?orgId=1&refresh=1s&from=now-15m&to=now&panelId=2" width="600" height="300" frameborder="0"></iframe>-->
+      <hr class="featurette-divider">
+      <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/p8ucSWYMk/new-deflection-graphs?orgId=1&refresh=1s&from=now-30m&to=now&panelId=4" width="600" height="300" frameborder="0"></iframe>
+    <!--<div class ="card">
+    <div class="card-body-center">
+      <iframe class="panel" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/Cmuvf1BMk/graph?orgId=1&refresh=1s&from=now-15m&to=now&panelId=2" width="600" height="300" frameborder="0"></iframe>
+    </div>
+    <div class="card-footer">
+                <h5 class="card-title"><strong>Average Deflection</strong></h5>
+                <p>This is a graph representing average deflection over the past 15 minutes. This data is updated every second. </p>
+      </div>
+    </div>-->
+  <!--</div>-->
+
+  <!--<div class="col">-->
+    <hr class="featurette-divider">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/p8ucSWYMk/new-deflection-graphs?orgId=1&refresh=1s&from=now-30m&to=now&panelId=4" width="600" height="300" frameborder="0"></iframe>
+        <div class="carousel-caption d-none d-md-block">
+        <h5>Average deflection</h5>
+        <p>This is average deflection over the past 30 minutes.</p>
+      </div>
+      </div>
+      <div class="carousel-item">
+        <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/p8ucSWYMk/new-deflection-graphs?orgId=1&refresh=1s&from=now-1d&to=now&panelId=4" width="600" height="300" frameborder="0"></iframe>
+        <div class="carousel-caption d-none d-md-block">
+        <h5>Average deflection</h5>
+        <p>This is average deflection over the past day.</p>
+      </div>
+      </div>
+      <div class="carousel-item">
+        <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/p8ucSWYMk/new-deflection-graphs?orgId=1&refresh=1s&from=now-7d&to=now&panelId=4" width="600" height="300" frameborder="0"></iframe>
+         <div class="carousel-caption d-none d-md-block">
+        <h5>Average deflection</h5>
+        <p>This is average deflection over the past 7 days.</p>
+      </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    </div>
+  <!--</div>-->
+<!--</div>-->
+  
+  
+  <!--<div class="row">
+    <iframe class="panel" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/UeZmj-fMz/table-view?orgId=1&refresh=1s&from=now-5m&to=now&panelId=2" width="600" height="200" frameborder="0"></iframe>
+  </div>-->
+<hr class="featurette-divider">
+<iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=3" width="600" height="200" frameborder="0"></iframe>
+<iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=4" width="600" height="200" frameborder="0"></iframe>
+
+
+
+<img class="test" src="{% static 'images/spectrum.png' %}" alt="HTML5 Icon" width="1100" height="100"></img>
+<div class="row">
+<div class="col" id="colLeft">
+  <p>Low Deflection</p>
+</div>
+<div class="col" id="colRight">
+  <p>High Deflection</p>
+</div>
+</div>
+
+
+<hr class="featurette-divider">
+</div>
+
+
+<!-- <iframe src="http://kb-d4ugbeeyrnw3u.australiaeast.cloudapp.azure.com:5601/app/dashboards#/view/35ce0380-5ae0-11eb-9f65-2f87cbc4f9e8?embed=true&_g=(filters%3A!()%2Cquery%3A(language%3Akuery%2Cquery%3A'')%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow%2Fd%2Cto%3Anow%2Fd))" height="600" width="800"></iframe> -->
+
+
+{% endblock content %}
