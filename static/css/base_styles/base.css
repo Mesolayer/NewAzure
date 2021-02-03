@@ -123,8 +123,8 @@ iframe {
 
 .portrait {
   position: relative;
-  width: 480px;
-  height: 480px;
+  width: 41%;
+  height: 41%;
   overflow: hidden;
 }
 .portrait img {
