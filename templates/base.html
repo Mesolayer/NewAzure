@@ -13,6 +13,22 @@
     {% block head %}{% endblock %}
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
     {% if title %}
         <title>Fibre Optics- {{ title }}</title>
     {% else %}
@@ -44,6 +60,7 @@
           {% block content %}{% endblock %}
         
     </section>
+
 
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 

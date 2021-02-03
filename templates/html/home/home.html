@@ -5,19 +5,93 @@
 
 <!--<h2>Home!</h2>-->
 
+
 <!-- always add this to each panel &refresh=1s-->
-<div class = "container-fluid">
-	<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="banner">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 fw-normal">Structural Health Monitoring </h1>
-      <p class="lead fw-normal">“Is the process of design, development and implementation of a damage detection or characterisation strategy for real-time assessment of structural condition.” </p>
-      <!--<a class="btn btn-outline-secondary" href="#">Coming soon</a>-->
+<!--<div class = "container-fluid bgTest">-->
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Example headline.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Another example headline.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>One more for good measure.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </div>
+        </div>
+      </div>
     </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
   </div>
+<!--</div>-->
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="circular--portrait">
+          <img src="{% static 'images/map.jpg' %}">
+        </div>
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <div class="circular--portrait">
+          <img src="{% static 'images/personOnBridge.jpg' %}">
+        </div>
+        <h2>Heading</h2>
+        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <div class="circular--portrait">
+          <img src="{% static 'images/sensor.jpg' %}">
+        </div>
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
 </div>
   
 <div class = "container">
 	 <!-- START THE FEATURETTES -->
+   <div class="banner">
+      <img src="{% static 'images/banner.jpg' %}">
+  </div>
 
     <hr class="featurette-divider">
 
@@ -28,7 +102,9 @@
       </div>
       <div class="col-md-5">
         <!--<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>-->
-        <img src="{% static 'images/image1.png' %}" class="img-fluid mx-auto d-block">
+        <div class="portrait">
+          <img src="{% static 'images/Image2.jpg' %}">
+        </div>
 
       </div>
     </div>
@@ -41,7 +117,10 @@
         <p class="lead">There are six strain sensor arrays and two temperature sensor arrays. Each strain sensor array contains 16 sensors at 1.0 m spacing. Each temperature sensor array contains 4 sensors at 5.0m spacing. The strain sensor arrays were divided into two sets of three arrays each. These are referred to as set A and set B. Furthermore, there is one set of two temperature sensor arrays, referred to as set C.The position on plan of the fibre optic sensor arrays for strain and temperature can be seen in the adjacent schematic.</p>
       </div>
       <div class="col-md-5 order-md-1">
-        <img src="{% static 'images/image2.png' %}" class="img-fluid">
+        <div class="portrait">
+          <img src="{% static 'images/Image1.jpg' %}">
+        </div>
+        <!--<img src="{% static 'images/Image2.jpg' %}" class="img-fluid">-->
       </div>
     </div>
 
@@ -53,13 +132,16 @@
         <p class="lead">When pedestrian traffic moves across the footbridge, there are various implications that relate to the changes in magnitude of the data received by the strain and temperature sensors. Such changes can result in fluctuations in various time-dependent structural parameters such as curvature, slope and deflection.</p>
       </div>
       <div class="col-md-5">
-         <img src="{% static 'images/image3.png' %}" class="img-fluid">
+         <div class="portrait">
+          <img src="{% static 'images/Image3.jpg' %}">
+        </div>
       </div>
     </div>
+    <!-- /END THE FEATURETTES -->
 
+    
     <hr class="featurette-divider">
 
-    <!-- /END THE FEATURETTES -->
 </div>
 
 
