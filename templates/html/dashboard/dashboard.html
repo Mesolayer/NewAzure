@@ -7,12 +7,42 @@
 
 <!-- always add this to each panel &refresh=1s-->
 
-<div class="container">
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles/dashboard.css' %}">
+
+
+<div class="container bg-grey">
+  <img class="test" src="{% static 'images/dashboard1.jpg' %}"></img>
+  <img class="test" src="{% static 'images/dashboard2.jpg' %}"></img>
   <!--<div class="row"> -->
    <!-- <div class ="col">-->
       <!--<iframe class="panel" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/Cmuvf1BMk/graph?orgId=1&refresh=1s&from=now-15m&to=now&panelId=2" width="600" height="300" frameborder="0"></iframe>-->
+
+    <hr class="featurette-divider">
+      <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=3" width="600" height="200" frameborder="0"></iframe>
+      <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=4" width="600" height="200" frameborder="0"></iframe>
+
+
+
+      <!--<img class="test" src="{% static 'images/spectrum.png' %}" alt="HTML5 Icon" width="1100" height="100"></img>-->
+      <img class="test" src="{% static 'images/spectrum.png' %}" alt="HTML5 Icon" width="1100" height="100"></img>
+      <div class="row">
+      <div class="col" id="colLeft">
+        <p>Low Deflection</p>
+      </div>
+      <div class="col" id="colRight">
+        <p>High Deflection</p>
+      </div>
+
+      <img class="test" src="{% static 'images/dashboard3New.jpg' %}"></img>
+     
       <hr class="featurette-divider">
       <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/p8ucSWYMk/new-deflection-graphs?orgId=1&refresh=1s&from=now-30m&to=now&panelId=4" width="600" height="300" frameborder="0"></iframe>
+
+
+       </div>
+      <hr class="featurette-divider">
+      </div>
+
     <!--<div class ="card">
     <div class="card-body-center">
       <iframe class="panel" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/Cmuvf1BMk/graph?orgId=1&refresh=1s&from=now-15m&to=now&panelId=2" width="600" height="300" frameborder="0"></iframe>
@@ -71,23 +101,6 @@
   <!--<div class="row">
     <iframe class="panel" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/UeZmj-fMz/table-view?orgId=1&refresh=1s&from=now-5m&to=now&panelId=2" width="600" height="200" frameborder="0"></iframe>
   </div>-->
-<hr class="featurette-divider">
-<iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=3" width="600" height="200" frameborder="0"></iframe>
-<iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=4" width="600" height="200" frameborder="0"></iframe>
-
-
-
-<img class="test" src="{% static 'images/spectrum.png' %}" alt="HTML5 Icon" width="1100" height="100"></img>
-<div class="row">
-<div class="col" id="colLeft">
-  <p>Low Deflection</p>
-</div>
-<div class="col" id="colRight">
-  <p>High Deflection</p>
-</div>
-</div>
-<hr class="featurette-divider">
-</div>
 
 
 <!-- <iframe src="http://kb-d4ugbeeyrnw3u.australiaeast.cloudapp.azure.com:5601/app/dashboards#/view/35ce0380-5ae0-11eb-9f65-2f87cbc4f9e8?embed=true&_g=(filters%3A!()%2Cquery%3A(language%3Akuery%2Cquery%3A'')%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow%2Fd%2Cto%3Anow%2Fd))" height="600" width="800"></iframe> -->
