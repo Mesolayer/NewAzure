@@ -261,7 +261,7 @@ header {
 .main-nav {
     float:left;
     list-style: none;
-    margin-top: 40px;
+    margin-top: 2%;
 }
 
 .main-nav li {
@@ -288,8 +288,8 @@ header {
 .logo {
     float: left;
     /* display: inline; */
-    margin: 10px 0;
-    width: 70%;
+    margin: 1% 0;
+    width: 40%;
 }
 
 /* ------------------------------------- */
