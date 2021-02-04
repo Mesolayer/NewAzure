@@ -142,7 +142,9 @@ iframe {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  /*opacity: 0.5;*/
 }
+
 
 
 /* Center align the text within the three columns below the carousel */
@@ -171,6 +173,7 @@ iframe {
 .carousel-caption {
   bottom: 3rem;
   z-index: 10;
+  /*background-color: rgba(255,255,255,0.6);*/
 }
 
 /* Declare heights because of positioning of img element */
