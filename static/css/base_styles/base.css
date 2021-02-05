@@ -249,7 +249,7 @@ h3 {
 /* HEADER */
 /* ------------------------------------- */
 
-header {
+/*header {
     background-color: #000000;
     background-size: cover;
     background-position: center;
@@ -287,9 +287,57 @@ header {
 
 .logo {
     float: left;
-    /* display: inline; */
+    lldisplay: inline;
     margin: 1% 0;
     width: 40%;
+}*/
+
+#navbar {
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+}
+
+/* Navbar links */
+#navbar a {
+  margin-left: 43px;
+  margin-right: 32px;
+  margin-top: 30px;
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+  font-size: 130%;
+}
+#navbar a:hover{
+  text-decoration: underline;
+}
+#navbar b {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
 }
 
 /* ------------------------------------- */

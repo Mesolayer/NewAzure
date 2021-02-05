@@ -38,7 +38,7 @@
 </head>
 
 <body>
-    <header>
+    <!--<header>
         <nav class="navbar">
           <a class="navbar-brand" href="#"><img src="{% static 'images/lor.png' %}" alt="LOR Logo" class="d-inline-block align-top logo"></a>
           <ul class="main-nav">
@@ -46,7 +46,28 @@
               <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
           </ul>
         </nav>
-    </header>
+    </header>-->
+    <div id="navbar">
+      <b class="navbar-brand" href="#">
+        <img src="{% static 'images/lor.png' %}" width="190" height="90" alt="">
+      </b>
+      <a href="{% url 'dashboard' %}">Dashboard</a>
+      <a href="{% url 'home' %}">Home</a>
+    </div>
+    <script>
+      window.onscroll = function() {myFunction()};
+      
+      var navbar = document.getElementById("navbar");
+      var sticky = navbar.offsetTop;
+      
+      function myFunction() {
+        if (window.pageYOffset >= sticky) {
+          navbar.classList.add("sticky")
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      }
+      </script>
 
     <section class="content">
         {% if messages %}
