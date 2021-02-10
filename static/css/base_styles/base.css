@@ -105,6 +105,16 @@ iframe {
     width: 100%;
 }
 
+.imageTestBanner{
+    /*margin-top:3%;*/
+    position:relative;
+    margin-top:90px;
+    display: block;
+    /*padding: 1%;*/
+    /*float: left;*/
+    width: 100%;
+}
+
 .bgTest{
     background-color: red;
 }
