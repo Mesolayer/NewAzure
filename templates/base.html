@@ -55,7 +55,10 @@
       <a href="{% url 'home' %}">Home</a>
     </div>
     <script>
-      window.onload = function() {myFunction()};
+      window.addEventListener('DOMContentLoaded', (event) => {
+              myFunction();
+      });
+      /*window.onload = function() {myFunction()};*/
       window.onscroll = function() {myFunction()};
       
       var navbar = document.getElementById("navbar");
