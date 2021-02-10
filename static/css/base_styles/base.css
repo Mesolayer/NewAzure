@@ -78,6 +78,7 @@ iframe {
     width: 94%;
 }
 
+
 .spacer {
   margin: 1% 0; /* Space out the Bootstrap <hr> more */
   background-color: white;
@@ -144,6 +145,29 @@ iframe {
   object-fit: contain;
   /*opacity: 0.5;*/
 }
+/*.child{
+  position:absolute;
+  top:25%;
+}
+
+.heatmap {
+  position: absolute;
+  left:0%;
+}
+.heatmap2 {
+  position: absolute;
+  left:50%;
+}
+
+.heatmapFrame {
+  width: 50% !important;
+}
+
+.heatmapBG {
+  position: relative;
+  background-image: url('../../images/heatMapBG.jpg');
+  background-size: cover;
+}*/
 
 
 
@@ -324,7 +348,8 @@ h3 {
 
 /* Page content */
 .content {
-  padding: 16px;
+  /*padding: 16px;*/
+  padding: 0%;
 }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
@@ -337,7 +362,8 @@ h3 {
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
 .sticky + .content {
-  padding-top: 60px;
+  /*padding-top: 60px;*/
+  padding-top: 0%;
 }
 
 /* ------------------------------------- */
