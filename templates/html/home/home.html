@@ -76,7 +76,7 @@
         <p>Located within the level one foyer of the newly built <a href="https://www.google.com.br/maps/place/Electrical+Engineering+Building+(J03)/@-33.8893833,151.191372,17z/data=!3m1!4b1!4m5!3m4!1s0x6b12b1d6bca13bd9:0x43ca69e7b2071b6c!8m2!3d-33.8893878!4d151.1935607"  target="_blank">Engineering and Technological Precinct</a> at the University of Sydney, the new footbridge will not only function as a medium to move from point A to point B, but also as an engaging learning tool for structural health monitoring.</p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <div class="circular--portrait">
+        <div class="circular--portrait">     
           <img src="{% static 'images/personOnBridge.jpg' %}">
         </div>
         <h2>Pedestrian Traffic</h2>
@@ -109,8 +109,36 @@
       <div class="col-md-5">
         <!--<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>-->
         <div class="portrait">
-          <img src="{% static 'images/Image2.jpg' %}">
+          <img id="myImg" src="{% static 'images/Image2.jpg' %}">
         </div>
+         <!-- The Modal -->
+         <div id="myModal" class="modal">
+          <span class="close">&times;</span>
+          <img class="modal-content" id="img01">
+          <div id="caption"></div>
+        </div>
+        <script>
+          // Get the modal
+          var modal = document.getElementById("myModal");
+          
+          // Get the image and insert it inside the modal - use its "alt" text as a caption
+          var img = document.getElementById("myImg");
+          var modalImg = document.getElementById("img01");
+          var captionText = document.getElementById("caption");
+          img.onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+          }
+          
+          // Get the <span> element that closes the modal
+          var span = document.getElementsByClassName("close")[0];
+          
+          // When the user clicks on <span> (x), close the modal
+          span.onclick = function() { 
+            modal.style.display = "none";
+          }
+          </script>
 
       </div>
     </div>
@@ -124,8 +152,36 @@
       </div>
       <div class="col-md-5 order-md-1">
         <div class="portrait">
-          <img src="{% static 'images/Image1.jpg' %}">
+          <img id="myImg" src="{% static 'images/Image1.jpg' %}">
         </div>
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+                  <span class="close">&times;</span>
+                  <img class="modal-content" id="img01">
+                  <div id="caption"></div>
+                </div>
+                <script>
+                  // Get the modal
+                  var modal = document.getElementById("myModal");
+                  
+                  // Get the image and insert it inside the modal - use its "alt" text as a caption
+                  var img = document.getElementById("myImg");
+                  var modalImg = document.getElementById("img01");
+                  var captionText = document.getElementById("caption");
+                  img.onclick = function(){
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    captionText.innerHTML = this.alt;
+                  }
+                  
+                  // Get the <span> element that closes the modal
+                  var span = document.getElementsByClassName("close")[0];
+                  
+                  // When the user clicks on <span> (x), close the modal
+                  span.onclick = function() { 
+                    modal.style.display = "none";
+                  }
+                  </script>
         <!--<img src="{% static 'images/Image2.jpg' %}" class="img-fluid">-->
       </div>
     </div>
@@ -139,8 +195,36 @@
       </div>
       <div class="col-md-5">
          <div class="portrait">
-          <img src="{% static 'images/Image3.jpg' %}">
+          <img id="myImg" src="{% static 'images/Image3.jpg' %}">
         </div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <span class="close">&times;</span>
+          <img class="modal-content" id="img01">
+          <div id="caption"></div>
+        </div>
+        <script>
+          // Get the modal
+          var modal = document.getElementById("myModal");
+          
+          // Get the image and insert it inside the modal - use its "alt" text as a caption
+          var img = document.getElementById("myImg");
+          var modalImg = document.getElementById("img01");
+          var captionText = document.getElementById("caption");
+          img.onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+          }
+          
+          // Get the <span> element that closes the modal
+          var span = document.getElementsByClassName("close")[0];
+          
+          // When the user clicks on <span> (x), close the modal
+          span.onclick = function() { 
+            modal.style.display = "none";
+          }
+          </script>
       </div>
     </div>
     <!-- /END THE FEATURETTES -->
