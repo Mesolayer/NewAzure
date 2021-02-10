@@ -7,13 +7,13 @@
 
 <!-- always add this to each panel &refresh=1s-->
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/styles/dashboard.css' %}">
+<!--<link rel="stylesheet" type="text/css" href="{% static 'css/styles/dashboard.css' %}">-->
 
-<div class="container-fluid banner">
-  <img class="test" src="{% static 'images/bannerDashboard.jpg' %}" alt="HTML5 Icon"></img>
+<div class="bannerDashboard">
+  <img src="{% static 'images/bannerDashboard.jpg' %}" alt="HTML5 Icon"></img>
 </div>
 
-<div class="container bg-grey">
+<div class="container">
   <!--<img class="test" src="{% static 'images/dashboard1.jpg' %}"></img>
   <img class="test" src="{% static 'images/dashboard2.jpg' %}"></img>-->
   <!--<div class="row"> -->
@@ -21,8 +21,8 @@
       <!--<iframe class="panel" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/Cmuvf1BMk/graph?orgId=1&refresh=1s&from=now-15m&to=now&panelId=2" width="600" height="300" frameborder="0"></iframe>-->
 
       
-      <img class="test" src="{% static 'images/sectionDashboard.jpg' %}" alt="HTML5 Icon"></img>
-      <img class="test" src="{% static 'images/planDiagramDashboard.jpg' %}" alt="HTML5 Icon"></img>
+      <img class="imageTest" src="{% static 'images/sectionDashboard.jpg' %}" alt="HTML5 Icon"></img>
+      <img class="imageTest" src="{% static 'images/planDiagramDashboard.jpg' %}" alt="HTML5 Icon"></img>
 
       <!--<div class="container heatmapBG">
         <div class ="child heatmap1">
@@ -33,14 +33,15 @@
         </div>
       </div>-->
 
-      <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=3" width="600" height="200" frameborder="0"></iframe>
-      <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=4" width="600" height="200" frameborder="0"></iframe>
+      <iframe class="heatmap" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=3" width="600" height="200" frameborder="0"></iframe>
+      <iframe class="heatmap" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=4" width="600" height="200" frameborder="0"></iframe>
 
 
        
 
       <!--<img class="test" src="{% static 'images/spectrum.png' %}" alt="HTML5 Icon" width="1100" height="100"></img>-->
-      <img class="test" src="{% static 'images/purpleSpec.png' %}" alt="HTML5 Icon" width="1100" height="100"></img>
+      <!--<img class="test" src="{% static 'images/purpleSpec.png' %}" alt="HTML5 Icon" width="1100" height="100"></img>-->
+      <img class="imageTest" src="{% static 'images/scaleDashboard.jpg' %}" alt="HTML5 Icon"></img>
       <div class="row">
       <div class="col" id="colLeft">
         <p>Low Deflection</p>
@@ -49,7 +50,7 @@
         <p>High Deflection</p>
       </div>
 
-      <img class="test" src="{% static 'images/scaleDashboard.jpg' %}" alt="HTML5 Icon"></img>
+     
 
      <!-- <img class="test" src="{% static 'images/dashboard3New.jpg' %}"></img>-->
      
@@ -59,66 +60,67 @@
         <hr class="featurette-divider">
       </div>
 
-
+  <div class="container">
     <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/p8ucSWYMk/new-deflection-graphs?orgId=1&refresh=1s&from=now-30m&to=now&panelId=4" width="600" height="300" frameborder="0"></iframe>
-        <div class="carousel-caption d-none d-md-block text-dark">
-        <h5>Average deflection</h5>
-        <p>This is average deflection over the past 30 minutes.</p>
-        
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/p8ucSWYMk/new-deflection-graphs?orgId=1&refresh=1s&from=now-30m&to=now&panelId=4" width="600" height="300" frameborder="0"></iframe>
+          <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Average deflection</h5>
+          <p>This is average deflection over the past 30 minutes.</p>
+          
+        </div>
+        </div>
+        <div class="carousel-item">
+          <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/p8ucSWYMk/new-deflection-graphs?orgId=1&refresh=1s&from=now-1d&to=now&panelId=4" width="600" height="300" frameborder="0"></iframe>
+          <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Average deflection</h5>
+          <p>This is average deflection over the past day.</p>
+          
+        </div>
+        </div>
+        <div class="carousel-item">
+          <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/p8ucSWYMk/new-deflection-graphs?orgId=1&refresh=1s&from=now-7d&to=now&panelId=4" width="600" height="300" frameborder="0"></iframe>
+           <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Average deflection</h5>
+          <p>This is average deflection over the past 7 days.</p>
+        </div>
+        </div>
       </div>
-      </div>
-      <div class="carousel-item">
-        <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/p8ucSWYMk/new-deflection-graphs?orgId=1&refresh=1s&from=now-1d&to=now&panelId=4" width="600" height="300" frameborder="0"></iframe>
-        <div class="carousel-caption d-none d-md-block text-dark">
-        <h5>Average deflection</h5>
-        <p>This is average deflection over the past day.</p>
-        
-      </div>
-      </div>
-      <div class="carousel-item">
-        <iframe src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/p8ucSWYMk/new-deflection-graphs?orgId=1&refresh=1s&from=now-7d&to=now&panelId=4" width="600" height="300" frameborder="0"></iframe>
-         <div class="carousel-caption d-none d-md-block text-dark">
-        <h5>Average deflection</h5>
-        <p>This is average deflection over the past 7 days.</p>
-      </div>
-      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
   </div>
+    
 
-<div class="container">
+  <div class="container">
     <div class="row">
-      <div class="col-lg-2">
+      <div class="col">
         <button type="button" class="btn btn-primary btn-sm" style="margin-left:70px; margin-bottom: 30px;" data-target="#carouselExampleIndicators" data-slide-to="0"> Last 30 minutes </button>
       </div>
-      <div class="col-lg-2">
+      <div class="col">
         <button type="button" class="btn btn-primary btn-sm" style="margin-left:110px;" data-target="#carouselExampleIndicators" data-slide-to="1"> Last  1  day </button>
       </div><!-- /.col-lg-4 -->
-      <div class="col-lg-2">
+      <div class="col">
         <button type="button" class="btn btn-primary btn-sm" style="margin-left:110px;" data-target="#carouselExampleIndicators" data-slide-to="2"> Last  7  days  </button>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->  
-</div>
+  </div>
 
-</div>
-<hr class="featurette-divider">
-</div>
-
+  </div>
+  <hr class="featurette-divider">
+  </div>
 
 
 

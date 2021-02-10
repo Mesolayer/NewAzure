@@ -75,7 +75,7 @@ iframe {
     display: block;
     /*padding: 1%;*/
     /*float: left;*/
-    width: 94%;
+    width: 100%;
 }
 
 
@@ -95,17 +95,18 @@ iframe {
   /* rtl:remove */
   letter-spacing: -.05rem;
 }
-.test{
+.imageTest{
     /*margin-top:3%;*/
-    margin: 3% auto;
+    position:relative;
+    margin: 0% auto;
     display: block;
     /*padding: 1%;*/
     /*float: left;*/
-    width: 94%;
+    width: 100%;
 }
 
 .bgTest{
-   background-image: url('../../images/cover1Min.png');
+    background-color: red;
 }
 
 .circular--portrait {
@@ -145,6 +146,24 @@ iframe {
   object-fit: contain;
   /*opacity: 0.5;*/
 }
+
+.bannerDashboard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.bannerDashboard img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /*opacity: 0.5;*/
+}
+
+.heatmap {
+  width: 75% !important;
+  display: block;
+}
+
 /*.child{
   position:absolute;
   top:25%;
