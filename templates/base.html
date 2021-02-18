@@ -11,8 +11,7 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% block head %}{% endblock %}
-    <!--<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">-->
-
+    <!--Banner image CSS code style-->
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -28,7 +27,7 @@
         }
       }
     </style>
-
+    <!--Creates the URL title for each page-->
     {% if title %}
         <title>Fibre Optics- {{ title }}</title>
     {% else %}
@@ -36,17 +35,9 @@
     {% endif %}
 
 </head>
+<!--The sticky navigation bar with an added jquery script-->
 
 <body>
-    <!--<header>
-        <nav class="navbar">
-          <a class="navbar-brand" href="#"><img src="{% static 'images/lor.png' %}" alt="LOR Logo" class="d-inline-block align-top logo"></a>
-          <ul class="main-nav">
-              <li><a href="{% url 'home' %}">Home</a></li>
-              <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-          </ul>
-        </nav>
-    </header>-->
     <div id="navbar">
       <b class="navbar-brand" href="#">
         <img src="{% static 'images/lor.png' %}" width="190" height="90" alt="">
@@ -61,7 +52,6 @@
       window.addEventListener('DOMContentLoaded', (event) => {
               myFunction();
       });
-      /*window.onload = function() {myFunction()};*/
       window.onscroll = function() {myFunction()};
       
       var navbar = document.getElementById("navbar");
@@ -77,13 +67,6 @@
       </script>
 
     <section class="content">
-        {% if messages %}
-          {% for message in messages %}
-          <div class="alert alert-{{ message.tags }}">
-            {{ message }}
-          </div>
-          {% endfor %}
-        {% endif %}
         
           {% block content %}{% endblock %}
         
@@ -91,8 +74,6 @@
 
 
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>

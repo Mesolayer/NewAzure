@@ -3,11 +3,11 @@
 
 {% block content %}
 
-<!--<h2>Home!</h2>-->
 
+<!-- Top banner
+  ================================================== -->
+  <!-- Carousel to rotate between different bits of information -->
 
-<!-- always add this to each panel &refresh=1s-->
-<!--<div class = "container-fluid bgTest">-->
 	<div id="myCarousel" class="carousel slide" style="margin-top:90px;" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -60,13 +60,11 @@
   </div>
 <!--</div>-->
 
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
+  
 
   <div class="container marketing">
 
-    <!-- Three columns of text below the carousel -->
+    <!-- Three columns of text with circular images below the carousel -->
     <div class="row">
       <div class="col-lg-4">
         <div class="circular--portrait">
@@ -94,20 +92,25 @@
 </div>
   
 <div class = "container">
-	 <!-- START THE FEATURETTES -->
+	 
+
+   <!-- Mid-banner
+  ================================================== -->
    <div class="banner">
       <img src="{% static 'images/render1.jpg' %}">
   </div>
 
     <hr class="featurette-divider">
 
+<!-- Section of information
+  ================================================== -->
+
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">Fiber Bragg Grating (FBG) Sensors <!--<span class="text-muted">It’ll blow your mind.</span>--></h2>
+        <h2 class="featurette-heading">Fiber Bragg Grating (FBG) Sensors </h2>
         <p class="lead">Fibre Bragg Grating (FBG) sensors measure changes in temperature and strain at discrete locations along a fibre optic cable. The FBGs are determined by generating periodic variations in the refractive index within the centre of an optical fibre. According to Bragg’s law, when a beam of light travels in the FBG sensor, the light from the broadband source passes through the grating at a particular wavelength, the Bragg wavelength is reflected which relates to the grating period. These changes in the wavelength of the reflected light are linearly proportional to changes in temperature and strain along the optical fibre and enables the computation of temperature and strain changes.</p>
       </div>
       <div class="col-md-5">
-        <!--<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>-->
         <div class="portrait">
           <img id="myImg3" src="{% static 'images/Image2.jpg' %}">
         </div>
@@ -144,7 +147,8 @@
     </div>
 
     <hr class="featurette-divider">
-
+<!-- Section of information
+  ================================================== -->
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading">Location Of Sensors Within The Footbridge <!--<span class="text-muted">See for yourself.</span>--></h2>
@@ -182,16 +186,15 @@
                     modal.style.display = "none";
                   }
                   </script>
-        
-        <!--<img src="{% static 'images/Image2.jpg' %}" class="img-fluid">-->
       </div>
     </div>
 
     <hr class="featurette-divider">
-
+<!-- Section of information
+  ================================================== -->
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">Pedestrian Flow and Changes in Sensor Data. <!--<span class="text-muted">Checkmate.</span>--></h2>
+        <h2 class="featurette-heading">Pedestrian Flow and Changes in Sensor Data. </h2>
         <p class="lead">When pedestrian traffic moves across the footbridge, there are various implications that relate to the changes in magnitude of the data received by the strain and temperature sensors. Such changes can result in fluctuations in various time-dependent structural parameters such as curvature, slope and deflection.</p>
       </div>
       <div class="col-md-5">
@@ -229,13 +232,9 @@
 
       </div>
     </div>
-    <!-- /END THE FEATURETTES -->
-
     
     <hr class="featurette-divider">
 
 </div>
-
-
 
 {% endblock content %}

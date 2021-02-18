@@ -3,44 +3,27 @@
 
 {% block content %}
 
-<!--<h2>Home!</h2>-->
-
-<!-- always add this to each panel &refresh=1s-->
-
-<!--<link rel="stylesheet" type="text/css" href="{% static 'css/styles/dashboard.css' %}">-->
-
+<!-- Header banner
+  ================================================== -->
 <div class="bannerDashboard">
   <img class="imageTestBanner" src="{% static 'images/bannerDashboard.jpg' %}" alt="HTML5 Icon"></img>
 </div>
 
-<div class="container">
-  <!--<img class="test" src="{% static 'images/dashboard1.jpg' %}"></img>
-  <img class="test" src="{% static 'images/dashboard2.jpg' %}"></img>-->
-  <!--<div class="row"> -->
-   <!-- <div class ="col">-->
-      <!--<iframe class="panel" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/Cmuvf1BMk/graph?orgId=1&refresh=1s&from=now-15m&to=now&panelId=2" width="600" height="300" frameborder="0"></iframe>-->
 
-      
+<div class="container">   
+<!-- Two images above heatmap
+  ================================================== --> 
       <img class="imageTest" src="{% static 'images/Section.jpg' %}" alt="HTML5 Icon"></img>
       <img class="imageTest" src="{% static 'images/planDiagram.jpg' %}" alt="HTML5 Icon"></img>
 
-      <!--<div class="container heatmapBG">
-        <div class ="child heatmap1">
-           <iframe class ="heatmapFrame" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=3" width="600" height="200" frameborder="0"></iframe>
-        </div>
-        <div class ="child heatmap2">
-          <iframe class ="heatmapFrame" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=4" width="600" height="200" frameborder="0"></iframe>
-        </div>
-      </div>-->
 
+<!-- Heatmap
+  ================================================== -->
       <iframe class="heatmap" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=3" width="600" height="200" frameborder="0"></iframe>
       <iframe class="heatmap" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/jdZWbZYGk/27th-heatmap?orgId=1&refresh=1s&from=now-5m&to=now&panelId=4" width="600" height="200" frameborder="0"></iframe>
 
-
-       
-
-      <!--<img class="test" src="{% static 'images/spectrum.png' %}" alt="HTML5 Icon" width="1100" height="100"></img>-->
-      <!--<img class="test" src="{% static 'images/purpleSpec.png' %}" alt="HTML5 Icon" width="1100" height="100"></img>-->
+<!-- Dashboard scale
+  ================================================== -->
       <img class="imageTest" src="{% static 'images/scaleDashboard.jpg' %}" alt="HTML5 Icon"></img>
       <div class="row">
       <div class="col" id="colLeft">
@@ -53,16 +36,12 @@
         <p style="text-align: center;"><b>This is a heatmap indicating live deflection values across the 38 sensor points on the bridge. A heat map is a graphical representation of data, where the magnitude of data values are defined by a colour scale.</b> </p>
       </div>
 
-     
-
-     <!-- <img class="test" src="{% static 'images/dashboard3New.jpg' %}"></img>-->
-     
-
-
       </div>
         <hr class="featurette-divider">
       </div>
 
+<!-- Carousel of average deflection
+  ================================================== -->
   <div class="container">
     <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -106,7 +85,8 @@
     </div>
   </div>
     
-
+<!-- Buttons to change deflection graph view 
+  ================================================== -->
   <div class="container">
     <div class="row text-align:center">
       <div class="col">
@@ -129,34 +109,8 @@
   </div>
   <hr class="featurette-divider">
   </div>
-
-
-
-
 </div>
-    <!--<div class ="card">
-    <div class="card-body-center">
-      <iframe class="panel" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/Cmuvf1BMk/graph?orgId=1&refresh=1s&from=now-15m&to=now&panelId=2" width="600" height="300" frameborder="0"></iframe>
-    </div>
-    <div class="card-footer">
-                <h5 class="card-title"><strong>Average Deflection</strong></h5>
-                <p>This is a graph representing average deflection over the past 15 minutes. This data is updated every second. </p>
-      </div>
-    </div>-->
-  <!--</div>-->
-
-  <!--<div class="col">-->
-  
-  <!--</div>-->
-<!--</div>-->
-  
-  
-  <!--<div class="row">
-    <iframe class="panel" src="http://lb-7f22f7qde3zni.australiaeast.cloudapp.azure.com:3000/d-solo/UeZmj-fMz/table-view?orgId=1&refresh=1s&from=now-5m&to=now&panelId=2" width="600" height="200" frameborder="0"></iframe>
-  </div>-->
-
-
-<!-- <iframe src="http://kb-d4ugbeeyrnw3u.australiaeast.cloudapp.azure.com:5601/app/dashboards#/view/35ce0380-5ae0-11eb-9f65-2f87cbc4f9e8?embed=true&_g=(filters%3A!()%2Cquery%3A(language%3Akuery%2Cquery%3A'')%2CrefreshInterval%3A(pause%3A!t%2Cvalue%3A0)%2Ctime%3A(from%3Anow%2Fd%2Cto%3Anow%2Fd))" height="600" width="800"></iframe> -->
+    
 
 
 {% endblock content %}
